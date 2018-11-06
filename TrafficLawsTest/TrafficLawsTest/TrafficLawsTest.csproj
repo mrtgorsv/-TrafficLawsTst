@@ -95,6 +95,7 @@
     <Compile Include="Utils\ImageExtensions.cs" />
     <Compile Include="Utils\IoC\ApplicationUIModule.cs" />
     <Compile Include="Utils\IoC\DIFactory.cs" />
+    <Compile Include="ViewModels\TestViewModel.cs" />
     <Compile Include="ViewModels\TestQuestionViewModel.cs" />
     <Compile Include="Views\About\AboutApplicationForm.cs">
       <SubType>Form</SubType>
@@ -162,6 +163,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\TrafficLawsTest.DataSource\TrafficLawsTest.DataSource.csproj">
+      <Project>{A29994CC-9745-422C-8CBA-6713BF76D9D6}</Project>
+      <Name>TrafficLawsTest.DataSource</Name>
+    </ProjectReference>
     <ProjectReference Include="..\TrafficLawsTest.Logic\TrafficLawsTest.Logic.csproj">
       <Project>{9AC9F2D0-F15D-4C65-9CAA-22C7ADA22508}</Project>
       <Name>TrafficLawsTest.Logic</Name>
