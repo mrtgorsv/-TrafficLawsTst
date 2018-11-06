@@ -1,4 +1,6 @@
-﻿using TrafficLawsTest.DataSource.Context;
+﻿using System.Data.Entity;
+using System.Linq;
+using TrafficLawsTest.DataSource.Context;
 using TrafficLawsTest.DataSource.Models;
 
 namespace TrafficLawsTest.Logic.Services
@@ -20,17 +22,24 @@ namespace TrafficLawsTest.Logic.Services
 
         public Test Get()
         {
-            throw new System.NotImplementedException();
+            return _domainContext.Tests
+                .Include(t => t.TestParts)
+                .Include(t => t.TestParts.Select(tp => tp.Answers))
+                .FirstOrDefault();
         }
 
         public Test Get(int id)
         {
-            throw new System.NotImplementedException();
+            return _domainContext.Tests
+                .Include(t => t.TestParts)
+                .Include(t => t.TestParts.Select(tp => tp.Answers))
+                .FirstOrDefault(t =>t.Id == id);
         }
 
         public void Update(Test test)
         {
-            throw new System.NotImplementedException();
+            _domainContext.Entry(test).State = EntityState.Modified;
+            _domainContext.SaveChanges();
         }
     }
 }

@@ -18,7 +18,7 @@ namespace TrafficLawsTest.DataSource.Models
 
         public byte[] Image { get; set; }
 
-        public string CorrectAnswer { get; set; }
+        public int CorrectAnswer { get; set; }
 
         public virtual ICollection<TestPartAnswer> Answers { get; set; }
     }

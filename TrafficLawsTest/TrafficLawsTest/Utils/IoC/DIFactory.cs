@@ -1,5 +1,6 @@
 ﻿using Ninject;
 using TrafficLawsTest.Logic.Utils.IoC;
+using TrafficLawsTest.Security.Utils.IoC;
 
 namespace TrafficLawsTest.Utils.IoC
 {
@@ -17,7 +18,7 @@ namespace TrafficLawsTest.Utils.IoC
         {
             if (_kernel == null)
             {
-                _kernel = new StandardKernel(new ApplicationLogicModule(), new ApplicationUIModule());
+                _kernel = new StandardKernel(new SecurityModule() , new LogicModule(), new UIModule());
             }
         }
     }

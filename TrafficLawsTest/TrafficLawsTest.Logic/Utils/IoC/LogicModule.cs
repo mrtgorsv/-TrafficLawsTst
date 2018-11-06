@@ -1,10 +1,10 @@
 ﻿using Ninject.Modules;
 using TrafficLawsTest.DataSource.Context;
-using TrafficLawsTest.Logic.Services;
+using TrafficLawsTest.Security.Services;
 
 namespace TrafficLawsTest.Logic.Utils.IoC
 {
-    public class ApplicationLogicModule : NinjectModule
+    public class LogicModule : NinjectModule
     {
         public override void Load()
         {

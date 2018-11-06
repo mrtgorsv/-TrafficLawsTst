@@ -52,14 +52,18 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\UserTestService.cs" />
     <Compile Include="Services\TestService.cs" />
-    <Compile Include="Services\UserService.cs" />
-    <Compile Include="Utils\IoC\ApplicationLogicModule.cs" />
+    <Compile Include="Utils\IoC\LogicModule.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\TrafficLawsTest.DataSource\TrafficLawsTest.DataSource.csproj">
       <Project>{A29994CC-9745-422C-8CBA-6713BF76D9D6}</Project>
       <Name>TrafficLawsTest.DataSource</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TrafficLawsTest.Security\TrafficLawsTest.Security.csproj">
+      <Project>{60D29C80-174F-4B13-801C-C5A24DAED864}</Project>
+      <Name>TrafficLawsTest.Security</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

@@ -73,6 +73,11 @@
     <Compile Include="Models\User.cs" />
     <Compile Include="Models\UserTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\DataResource.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DataResource.resx</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201811050739036_InitialCreate.resx">
@@ -84,10 +89,23 @@
     <EmbeddedResource Include="Migrations\201811051044446_AddImageField.resx">
       <DependentUpon>201811051044446_AddImageField.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Properties\DataResource.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>DataResource.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Content\Images\Test_01.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Content\Images\Test_02.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Content\Images\Test_03.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

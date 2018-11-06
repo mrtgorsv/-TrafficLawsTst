@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Linq;
-using TrafficLawsTest.Logic.Services;
 using TrafficLawsTest.Security.Models;
+using TrafficLawsTest.Security.Services;
 
 namespace TrafficLawsTest.Security
 {

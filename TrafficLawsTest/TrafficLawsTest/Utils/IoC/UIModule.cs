@@ -6,7 +6,7 @@ using TrafficLawsTest.Views;
 
 namespace TrafficLawsTest.Utils.IoC
 {
-    public class ApplicationUIModule: NinjectModule
+    public class UIModule: NinjectModule
     {
         public override void Load()
         {
@@ -18,7 +18,6 @@ namespace TrafficLawsTest.Utils.IoC
             Bind<StatisticUserControl>().ToSelf();
             Bind<StartUserControl>().ToSelf();
 
-            Bind<ISecurityManager>().To<SecurityManager>().InSingletonScope();
 
             Bind<ILoginPresenrer>().To<LoginPresenter>().InTransientScope();
             Bind<IMainPresenter>().To<MainPresenter>().InTransientScope();

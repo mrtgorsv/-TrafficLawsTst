@@ -2,7 +2,7 @@
 using TrafficLawsTest.DataSource.Context;
 using TrafficLawsTest.DataSource.Models;
 
-namespace TrafficLawsTest.Logic.Services
+namespace TrafficLawsTest.Security.Services
 {
     public interface IUserService
     {
