@@ -16,8 +16,6 @@ namespace TrafficLawsTest.DataSource.Models
 
         public string Text { get; set; }
 
-        public string ImagePath { get; set; }
-
         public string Options { get; set; }
 
         public int AnswerNumber { get; set; }

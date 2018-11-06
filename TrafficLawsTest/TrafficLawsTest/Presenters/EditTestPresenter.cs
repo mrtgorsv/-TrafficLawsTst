@@ -18,7 +18,7 @@ namespace TrafficLawsTest.Presenters
 
         void SetSelectedQuestion(int id);
 
-        List<SelectItem> GetAviableQuestions();
+        List<SelectItem> GetAvailableQuestions();
 
         bool Save();
     }
@@ -28,9 +28,10 @@ namespace TrafficLawsTest.Presenters
         private readonly ISecurityManager _securityManager;
         private readonly ITestService _testService;
 
-        public EditTestPresenter(ISecurityManager securityManager)
+        public EditTestPresenter(ISecurityManager securityManager, ITestService testService)
         {
             _securityManager = securityManager;
+            _testService = testService;
         }
 
         public string Name { get; set; }
@@ -51,7 +52,7 @@ namespace TrafficLawsTest.Presenters
             throw new System.NotImplementedException();
         }
 
-        public List<SelectItem> GetAviableQuestions()
+        public List<SelectItem> GetAvailableQuestions()
         {
             throw new System.NotImplementedException();
         }
