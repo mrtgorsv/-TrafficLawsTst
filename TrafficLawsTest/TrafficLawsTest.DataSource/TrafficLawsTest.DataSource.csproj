@@ -65,6 +65,14 @@
     <Compile Include="Migrations\201811051044446_AddImageField.Designer.cs">
       <DependentUpon>201811051044446_AddImageField.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201811061908167_UpdateFields.cs" />
+    <Compile Include="Migrations\201811061908167_UpdateFields.Designer.cs">
+      <DependentUpon>201811061908167_UpdateFields.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201811061917406_RemoveTestReference.cs" />
+    <Compile Include="Migrations\201811061917406_RemoveTestReference.Designer.cs">
+      <DependentUpon>201811061917406_RemoveTestReference.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\TestPart.cs" />
     <Compile Include="Models\TestPartAnswer.cs" />
@@ -88,6 +96,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201811051044446_AddImageField.resx">
       <DependentUpon>201811051044446_AddImageField.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201811061908167_UpdateFields.resx">
+      <DependentUpon>201811061908167_UpdateFields.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201811061917406_RemoveTestReference.resx">
+      <DependentUpon>201811061917406_RemoveTestReference.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\DataResource.resx">
       <Generator>ResXFileCodeGenerator</Generator>

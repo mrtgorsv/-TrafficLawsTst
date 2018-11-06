@@ -21,6 +21,7 @@ namespace TrafficLawsTest.Utils.IoC
 
             Bind<ILoginPresenrer>().To<LoginPresenter>().InTransientScope();
             Bind<IMainPresenter>().To<MainPresenter>().InTransientScope();
+            Bind<ITestPresenter>().To<TestPresenter>().InTransientScope();
 
         }
     }

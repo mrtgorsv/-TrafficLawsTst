@@ -19,7 +19,10 @@ namespace TrafficLawsTest.DataSource.Migrations
 
         protected override void Seed(DomainContext context)
         {
-            AddUsers(context);
+            if (!context.Users.Any())
+            {
+                AddUsers(context);
+            }
         }
 
         private void AddUsers(DomainContext context)

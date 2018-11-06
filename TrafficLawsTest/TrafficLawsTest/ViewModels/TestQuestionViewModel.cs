@@ -6,6 +6,8 @@ namespace TrafficLawsTest.ViewModels
     {
         public byte[] Content { get; set; }
         public int Seq { get; set; }
+        public int CorrectAnswer { get; set; }
+        public int UserAnswer { get; set; }
         public List<AnswerViewModel> Answers { get; set; }
     }
 
@@ -13,7 +15,6 @@ namespace TrafficLawsTest.ViewModels
     {
         public int Seq { get; set; }
         public string Text { get; set; }
-        public bool IsCorrect { get; set; }
         public bool Selected { get; set; }
     }
 

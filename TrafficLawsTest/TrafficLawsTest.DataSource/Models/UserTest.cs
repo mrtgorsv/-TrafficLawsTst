@@ -13,9 +13,6 @@ namespace TrafficLawsTest.DataSource.Models
         [ForeignKey("User")]
         public int UserId { get; set; }
 
-        [ForeignKey("Test")]
-        public int TestId { get; set; }
-
         public bool IsCompleted { get; set; }
 
         public DateTime? StartTime { get; set; }
@@ -24,6 +21,5 @@ namespace TrafficLawsTest.DataSource.Models
         public double Result { get; set; }
 
         public virtual User User { get; set; }
-        public virtual Test Test { get; set; }
     }
 }

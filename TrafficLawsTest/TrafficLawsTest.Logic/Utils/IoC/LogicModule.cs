@@ -1,6 +1,6 @@
 ﻿using Ninject.Modules;
 using TrafficLawsTest.DataSource.Context;
-using TrafficLawsTest.Security.Services;
+using TrafficLawsTest.Logic.Services;
 
 namespace TrafficLawsTest.Logic.Utils.IoC
 {
@@ -8,9 +8,8 @@ namespace TrafficLawsTest.Logic.Utils.IoC
     {
         public override void Load()
         {
-
-            Bind<IUserService>().To<UserService>().InTransientScope();
-
+            Bind<ITestService>().To<TestService>().InTransientScope();
+            Bind<IUserTestService>().To<UserTestService>().InTransientScope();
             Bind<IDomainContext>().To<DomainContext>().InTransientScope();
         }
     }

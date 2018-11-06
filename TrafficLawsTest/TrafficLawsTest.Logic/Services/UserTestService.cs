@@ -5,7 +5,7 @@ namespace TrafficLawsTest.Logic.Services
 {
     public interface IUserTestService
     {
-        void AddUserResult(int reuslt , int testId);
+        void AddUserResult(int reuslt);
     }
 
     public class UserTestService : IUserTestService
@@ -19,11 +19,10 @@ namespace TrafficLawsTest.Logic.Services
             _securityManager = securityManager;
         }
 
-        public void AddUserResult(int reuslt, int testId)
+        public void AddUserResult(int reuslt)
         {
             var newTestResult = _domainContext.UserTests.Create();
 
-            newTestResult.TestId = testId;
             newTestResult.UserId = _securityManager.CurrentPrincipal.Id;
 
             newTestResult.Result = reuslt;

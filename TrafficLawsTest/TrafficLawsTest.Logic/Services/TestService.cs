@@ -1,4 +1,5 @@
-﻿using System.Data.Entity;
+﻿using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using TrafficLawsTest.DataSource.Context;
 using TrafficLawsTest.DataSource.Models;
@@ -7,8 +8,7 @@ namespace TrafficLawsTest.Logic.Services
 {
     public interface ITestService
     {
-        Test Get();
-        Test Get(int id);
+        List<TestPart> Get();
         void Update(Test test);
     }
 
@@ -20,20 +20,11 @@ namespace TrafficLawsTest.Logic.Services
             _domainContext = domainContext;
         }
 
-        public Test Get()
+        public List<TestPart> Get()
         {
-            return _domainContext.Tests
-                .Include(t => t.TestParts)
-                .Include(t => t.TestParts.Select(tp => tp.Answers))
-                .FirstOrDefault();
-        }
-
-        public Test Get(int id)
-        {
-            return _domainContext.Tests
-                .Include(t => t.TestParts)
-                .Include(t => t.TestParts.Select(tp => tp.Answers))
-                .FirstOrDefault(t =>t.Id == id);
+            return _domainContext.TestParts
+                .Include(t => t.Answers)
+                .ToList();
         }
 
         public void Update(Test test)

@@ -75,12 +75,14 @@ namespace TrafficLawsTest
         private void ShowTest()
         {
             var test = DiFactory.Resolve<TestUserControl>();
+            test.ExitTest += (sndr, args) => { ShowStartPanel(); };
             ShowContent(test);
         }
 
         private void ShowStatisticPanel()
         {
-            throw new NotImplementedException();
+            var statistic = DiFactory.Resolve<StatisticUserControl>();
+            ShowContent(statistic);
         }
 
         private void ShowContent(Control content)
