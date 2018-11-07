@@ -27,17 +27,28 @@ namespace TrafficLawsTest.DataSource.Migrations
 
         private void AddUsers(DomainContext context)
         {
+
             const string admin = "admin";
+            const string test = "test";
+
             if (context.Users.Any(u => u.Login.Equals(admin)))
             {
-                
+                return;
             }
+
             var adminUser = new User
             {
                 Login = admin,
                 Password = admin,
                 Roles = new List<Role>()
             };
+            var testUser = new User
+            {
+                Login = test,
+                Password = test,
+                Roles = new List<Role>()
+            };
+
             var adminRole = new Role
             {
                 Name = admin,
@@ -46,6 +57,7 @@ namespace TrafficLawsTest.DataSource.Migrations
             adminRole.Users.Add(adminUser);
             adminUser.Roles.Add(adminRole);
             context.Users.Add(adminUser);
+            context.Users.Add(testUser);
             context.Roles.Add(adminRole);
 
             var firstQuestion = new TestPart

@@ -9,6 +9,9 @@ namespace TrafficLawsTest.ViewModels
         public int CorrectAnswer { get; set; }
         public int UserAnswer { get; set; }
         public List<AnswerViewModel> Answers { get; set; }
+
+        public bool IsCorrect => CorrectAnswer.Equals(UserAnswer);
+        public string CorrectString => IsCorrect ? "Верно" : "Неверно";
     }
 
     public class AnswerViewModel

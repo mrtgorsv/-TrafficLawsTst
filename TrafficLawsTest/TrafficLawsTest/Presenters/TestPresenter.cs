@@ -15,6 +15,7 @@ namespace TrafficLawsTest.Presenters
         bool IsLast { get; }
         bool IsFirst { get; }
         string GetAnswerText(int index);
+        string[] SaveResult();
     }
 
     public class TestPresenter : ITestPresenter
@@ -80,6 +81,7 @@ namespace TrafficLawsTest.Presenters
             {
                 Seq = tp.Seq,
                 Content = tp.Image,
+                CorrectAnswer = tp.CorrectAnswer,
                 Answers = tp.Answers.Select(ta => new AnswerViewModel()
                 {
                     Seq = ta.AnswerNumber,
@@ -90,11 +92,13 @@ namespace TrafficLawsTest.Presenters
             _currentQuestion = _questions.FirstOrDefault();
         }
 
-
-        public void SaveResult()
+        public string[] SaveResult()
         {
-            var result = _questions.Count(q => q.CorrectAnswer.Equals(q.UserAnswer));
-            _userTestService.AddUserResult(result);
+            var result = _questions.Count(q => q.IsCorrect);
+
+            _userTestService.AddUserResult(result , _questions.Count);
+
+            return _questions.Select(q => $"Вопрос {q.Seq} - {q.CorrectString}").ToArray();
         }
     }
 }

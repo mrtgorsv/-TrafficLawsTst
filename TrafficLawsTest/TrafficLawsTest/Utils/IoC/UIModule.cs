@@ -1,7 +1,6 @@
 ﻿using Ninject.Modules;
 using TrafficLawsTest.Controls;
 using TrafficLawsTest.Presenters;
-using TrafficLawsTest.Security;
 using TrafficLawsTest.Views;
 
 namespace TrafficLawsTest.Utils.IoC
@@ -22,6 +21,7 @@ namespace TrafficLawsTest.Utils.IoC
             Bind<ILoginPresenrer>().To<LoginPresenter>().InTransientScope();
             Bind<IMainPresenter>().To<MainPresenter>().InTransientScope();
             Bind<ITestPresenter>().To<TestPresenter>().InTransientScope();
+            Bind<IStatisticPresenter>().To<StatisticPresenter>().InTransientScope();
 
         }
     }

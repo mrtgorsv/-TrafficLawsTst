@@ -73,6 +73,14 @@
     <Compile Include="Migrations\201811061917406_RemoveTestReference.Designer.cs">
       <DependentUpon>201811061917406_RemoveTestReference.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201811071735240_UpdateUserTest.cs" />
+    <Compile Include="Migrations\201811071735240_UpdateUserTest.Designer.cs">
+      <DependentUpon>201811071735240_UpdateUserTest.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201811071749075_AddUserTestDateStamp.cs" />
+    <Compile Include="Migrations\201811071749075_AddUserTestDateStamp.Designer.cs">
+      <DependentUpon>201811071749075_AddUserTestDateStamp.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\TestPart.cs" />
     <Compile Include="Models\TestPartAnswer.cs" />
@@ -102,6 +110,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201811061917406_RemoveTestReference.resx">
       <DependentUpon>201811061917406_RemoveTestReference.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201811071735240_UpdateUserTest.resx">
+      <DependentUpon>201811071735240_UpdateUserTest.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201811071749075_AddUserTestDateStamp.resx">
+      <DependentUpon>201811071749075_AddUserTestDateStamp.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\DataResource.resx">
       <Generator>ResXFileCodeGenerator</Generator>

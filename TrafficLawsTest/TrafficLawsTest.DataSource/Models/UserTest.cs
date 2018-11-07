@@ -13,12 +13,10 @@ namespace TrafficLawsTest.DataSource.Models
         [ForeignKey("User")]
         public int UserId { get; set; }
 
-        public bool IsCompleted { get; set; }
+        public DateTime DateStamp { get; set; }
 
-        public DateTime? StartTime { get; set; }
-        public DateTime? EndTime { get; set; }
-        public int Attempt { get; set; }
-        public double Result { get; set; }
+        public int Result { get; set; }
+        public int Total { get; set; }
 
         public virtual User User { get; set; }
     }
