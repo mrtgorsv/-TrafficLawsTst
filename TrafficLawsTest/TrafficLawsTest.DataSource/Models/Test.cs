@@ -5,6 +5,10 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace TrafficLawsTest.DataSource.Models
 {
+    
+    /// <summary>
+    /// Тест ПДД
+    /// </summary>
     [Serializable]
     public class Test
     {

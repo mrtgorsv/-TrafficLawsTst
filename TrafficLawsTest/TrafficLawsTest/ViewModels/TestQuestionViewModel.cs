@@ -2,10 +2,16 @@
 
 namespace TrafficLawsTest.ViewModels
 {
+    /// <summary>
+    /// Модель представления, описывающая задание теста
+    /// </summary>
     public class TestQuestionViewModel
     {
         public byte[] Content { get; set; }
         public int Seq { get; set; }
+
+        public string Name => $"Вопрос #{Seq}";
+
         public int CorrectAnswer { get; set; }
         public int UserAnswer { get; set; }
         public List<AnswerViewModel> Answers { get; set; }

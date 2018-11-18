@@ -5,6 +5,10 @@ using TrafficLawsTest.ViewModels;
 
 namespace TrafficLawsTest.Presenters
 {
+    /// <summary>
+    /// Класс презентер для представления теста ПДД
+    /// Описывают логику данного представления
+    /// </summary>
     public interface ITestPresenter
     {
         void LoadTest(int? testId = null);
@@ -14,6 +18,7 @@ namespace TrafficLawsTest.Presenters
 
         bool IsLast { get; }
         bool IsFirst { get; }
+        bool TestComplete { get; }
         string GetAnswerText(int index);
         string[] SaveResult();
     }
@@ -40,6 +45,12 @@ namespace TrafficLawsTest.Presenters
         }
 
         public bool IsFirst => _questions?.IndexOf(_currentQuestion) == 0;
+
+        public bool TestComplete
+        {
+            get { return _questions.All(q => q.UserAnswer != 0); }
+        }
+
         public bool IsLast => _questions?.IndexOf(_currentQuestion) + 1 == _questions?.Count;
 
         public string GetAnswerText(int index)
@@ -98,7 +109,7 @@ namespace TrafficLawsTest.Presenters
 
             _userTestService.AddUserResult(result , _questions.Count);
 
-            return _questions.Select(q => $"Вопрос {q.Seq} - {q.CorrectString}").ToArray();
+            return _questions.Select(q => $"{q.Name} - {q.CorrectString}").ToArray();
         }
     }
 }

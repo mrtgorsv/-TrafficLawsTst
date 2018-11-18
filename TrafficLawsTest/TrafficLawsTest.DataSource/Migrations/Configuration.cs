@@ -1,9 +1,8 @@
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
-using System.Reflection;
 using TrafficLawsTest.DataSource.Context;
 using TrafficLawsTest.DataSource.Models;
+using TrafficLawsTest.DataSource.Utils;
 
 namespace TrafficLawsTest.DataSource.Migrations
 {
@@ -14,7 +13,7 @@ namespace TrafficLawsTest.DataSource.Migrations
         public Configuration()
         {
             AutomaticMigrationsEnabled = false;
-            ContextKey = "TrafficLawsTest.DataSource.Context.DomainContext"; 
+            ContextKey = "TrafficLawsTest.DataSource.Context.DomainContext";
         }
 
         protected override void Seed(DomainContext context)
@@ -23,11 +22,57 @@ namespace TrafficLawsTest.DataSource.Migrations
             {
                 AddUsers(context);
             }
+
+            if (context.TestParts.Count() < 10)
+            {
+                context.TestParts.RemoveRange(context.TestParts.ToList());
+                context.SaveChanges();
+                AddQuestions(context);
+            }
+        }
+
+        private void AddQuestions(DomainContext context)
+        {
+            int seq = 1;
+
+            context.TestParts.Add(CreateTestPart(3, seq++, "70 км/ч", "50 км/ч", "90 км/ч", "110 км/ч"));
+            context.TestParts.Add(CreateTestPart(4, seq++, "Только Г", "Б,В и Г", "Все", "Только В"));
+            context.TestParts.Add(CreateTestPart(4, seq++, "Только водитель автомобиля А", "Только водитель автомобиля Б", "Оба", "Никто не нарушил"));
+            context.TestParts.Add(CreateTestPart(2, seq++, "А и В", "А и Г", "Б и В", "Б и Г"));
+            context.TestParts.Add(CreateTestPart(4, seq++, "110 км/ч", "60 км/ч", "70 км/ч", "90 км/ч"));
+            context.TestParts.Add(CreateTestPart(3, seq++, "А и В", "Б и В", "Только В", "В любом из указанных"));
+            context.TestParts.Add(CreateTestPart(1, seq++, "10 м", "5 м", "15 м", "20 м"));
+            context.TestParts.Add(CreateTestPart(4, seq++, "Только автобусу", "Только мотоциклу", "Легковушке и автобусу", "Никому"));
+            context.TestParts.Add(CreateTestPart(3, seq++, "Прямо и налево", "Прямо и в обратном направлении", "Только прямо", "В любом направлении"));
+            context.TestParts.Add(CreateTestPart(1, seq, "Б и В", "Только В", "Все", "Только Б"));
+        }
+
+        private TestPart CreateTestPart(int correctAnswer, int seq, params string[] answers)
+        {
+            var question = new TestPart
+            {
+                CorrectAnswer = correctAnswer,
+                Image = ImageLoader.FromAssembly($"Test_{seq:00}"),
+                Seq = seq,
+                Answers = new List<TestPartAnswer>()
+            };
+
+            for (int i = 0; i < answers.Length; i++)
+            {
+                question.Answers.Add(
+                    new TestPartAnswer
+                    {
+                        TestPart = question,
+                        AnswerNumber = i + 1,
+                        Text = answers[i]
+                    });
+            }
+
+            return question;
         }
 
         private void AddUsers(DomainContext context)
         {
-
             const string admin = "admin";
             const string test = "test";
 
@@ -59,131 +104,6 @@ namespace TrafficLawsTest.DataSource.Migrations
             context.Users.Add(adminUser);
             context.Users.Add(testUser);
             context.Roles.Add(adminRole);
-
-            var firstQuestion = new TestPart
-            {
-                    CorrectAnswer = 3,
-                    Image = LoadImage("Test_01"),
-                    Seq = 0
-                };
-            firstQuestion.Answers = new List<TestPartAnswer>
-            {
-                new TestPartAnswer
-                {
-                    TestPart = firstQuestion,
-                    AnswerNumber = 1,
-                    Text = "70 км / ч"
-                },
-                new TestPartAnswer
-                {
-                    TestPart = firstQuestion,
-                    AnswerNumber = 2,
-                    Text = "50 км / ч"
-                },
-                new TestPartAnswer
-                {
-                    TestPart = firstQuestion,
-                    AnswerNumber = 3,
-                    Text = "90 км / ч"
-                },
-                new TestPartAnswer
-                {
-                    TestPart = firstQuestion,
-                    AnswerNumber = 4,
-                    Text = "110 км / ч"
-                }
-            };
-
-
-            var secondQuestion = new TestPart
-            {
-                CorrectAnswer = 4,
-                Image = LoadImage("Test_02"),
-                Seq = 1
-            };
-
-            secondQuestion.Answers = new List<TestPartAnswer>
-            {
-                new TestPartAnswer
-                {
-                    TestPart = secondQuestion,
-                    AnswerNumber = 1,
-                    Text = "Только Г"
-                },
-                new TestPartAnswer
-                {
-                    TestPart = secondQuestion,
-                    AnswerNumber = 2,
-                    Text = "Б,В и Г"
-                },
-                new TestPartAnswer
-                {
-                    TestPart = secondQuestion,
-                    AnswerNumber = 3,
-                    Text = "Все"
-                },
-                new TestPartAnswer
-                {
-                    TestPart = secondQuestion,
-                    AnswerNumber = 4,
-                    Text = "Только В"
-                }
-            };
-
-
-            var thirdQuestion = new TestPart
-            {
-                CorrectAnswer = 4,
-                Image = LoadImage("Test_03"),
-                Seq = 1
-            };
-
-            thirdQuestion.Answers = new List<TestPartAnswer>
-            {
-                new TestPartAnswer
-                {
-                    TestPart = thirdQuestion ,
-                    AnswerNumber = 1,
-                    Text = "Только водитель автомобиля А"
-                },
-                new TestPartAnswer
-                {
-                    TestPart = thirdQuestion ,
-                    AnswerNumber = 2,
-                    Text = "Только водитель автомобиля Б"
-                },
-                new TestPartAnswer
-                {
-                    TestPart = thirdQuestion ,
-                    AnswerNumber = 3,
-                    Text = "Оба"
-                },
-                new TestPartAnswer
-                {
-                    TestPart = thirdQuestion ,
-                    AnswerNumber = 4,
-                    Text = "Никто не нарушил"
-                }
-            };
-
-            context.TestParts.Add(firstQuestion);
-            context.TestParts.Add(secondQuestion);
-            context.TestParts.Add(thirdQuestion);
-        }
-
-        private byte[] LoadImage(string name)
-        {
-            var assembly = Assembly.GetExecutingAssembly();
-            string resourceName = assembly.GetManifestResourceNames()
-                .Single(str => str.Contains(name));
-
-            using (Stream stream = assembly.GetManifestResourceStream(resourceName))
-            {
-                if (stream == null) return null;
-                byte[] ba = new byte[stream.Length];
-                stream.Read(ba, 0, ba.Length);
-                return ba;
-            }
         }
     }
 }

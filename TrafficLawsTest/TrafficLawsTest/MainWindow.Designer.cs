@@ -32,11 +32,13 @@
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.toolStripDropDownButton1 = new System.Windows.Forms.ToolStripDropDownButton();
             this.AboutTrafficLawsButton = new System.Windows.Forms.ToolStripMenuItem();
-            this.AboutApplicationButton = new System.Windows.Forms.ToolStripMenuItem();
+            this.AboutPointSystemButton = new System.Windows.Forms.ToolStripMenuItem();
+            this.AboutApplicationMenuButton = new System.Windows.Forms.ToolStripMenuItem();
             this.EditTestButton = new System.Windows.Forms.ToolStripButton();
             this.UserLabel = new System.Windows.Forms.ToolStripLabel();
             this.toolStripLabel2 = new System.Windows.Forms.ToolStripLabel();
             this.ContentPanel = new System.Windows.Forms.Panel();
+            this.AboutAuthorMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -55,15 +57,18 @@
             // 
             // toolStripDropDownButton1
             // 
+            this.toolStripDropDownButton1.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
             this.toolStripDropDownButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
             this.toolStripDropDownButton1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.AboutTrafficLawsButton,
-            this.AboutApplicationButton});
+            this.AboutPointSystemButton,
+            this.AboutApplicationMenuButton,
+            this.AboutAuthorMenuItem});
             this.toolStripDropDownButton1.Image = ((System.Drawing.Image)(resources.GetObject("toolStripDropDownButton1.Image")));
             this.toolStripDropDownButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripDropDownButton1.Name = "toolStripDropDownButton1";
-            this.toolStripDropDownButton1.Size = new System.Drawing.Size(66, 22);
-            this.toolStripDropDownButton1.Text = "Справка";
+            this.toolStripDropDownButton1.Size = new System.Drawing.Size(71, 22);
+            this.toolStripDropDownButton1.Text = "Свойства";
             // 
             // AboutTrafficLawsButton
             // 
@@ -71,11 +76,17 @@
             this.AboutTrafficLawsButton.Size = new System.Drawing.Size(184, 22);
             this.AboutTrafficLawsButton.Text = "Что такое ПДД";
             // 
-            // AboutApplicationButton
+            // AboutPointSystemButton
             // 
-            this.AboutApplicationButton.Name = "AboutApplicationButton";
-            this.AboutApplicationButton.Size = new System.Drawing.Size(184, 22);
-            this.AboutApplicationButton.Text = "Оценочная система";
+            this.AboutPointSystemButton.Name = "AboutPointSystemButton";
+            this.AboutPointSystemButton.Size = new System.Drawing.Size(184, 22);
+            this.AboutPointSystemButton.Text = "Оценочная система";
+            // 
+            // AboutApplicationMenuButton
+            // 
+            this.AboutApplicationMenuButton.Name = "AboutApplicationMenuButton";
+            this.AboutApplicationMenuButton.Size = new System.Drawing.Size(184, 22);
+            this.AboutApplicationMenuButton.Text = "О программе";
             // 
             // EditTestButton
             // 
@@ -102,20 +113,31 @@
             // 
             // ContentPanel
             // 
+            this.ContentPanel.BackColor = System.Drawing.Color.Transparent;
             this.ContentPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ContentPanel.Location = new System.Drawing.Point(0, 25);
             this.ContentPanel.Name = "ContentPanel";
             this.ContentPanel.Size = new System.Drawing.Size(800, 425);
             this.ContentPanel.TabIndex = 1;
             // 
+            // AboutAuthorMenuItem
+            // 
+            this.AboutAuthorMenuItem.Name = "AboutAuthorMenuItem";
+            this.AboutAuthorMenuItem.Size = new System.Drawing.Size(184, 22);
+            this.AboutAuthorMenuItem.Text = "Об авторе";
+            // 
             // MainWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackgroundImage = global::TrafficLawsTest.Properties.Resources.theme;
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.ContentPanel);
             this.Controls.Add(this.toolStrip1);
+            this.KeyPreview = true;
             this.Name = "MainWindow";
+            this.Opacity = 0D;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
@@ -129,11 +151,13 @@
         private System.Windows.Forms.ToolStrip toolStrip1;
         private System.Windows.Forms.ToolStripDropDownButton toolStripDropDownButton1;
         private System.Windows.Forms.ToolStripMenuItem AboutTrafficLawsButton;
-        private System.Windows.Forms.ToolStripMenuItem AboutApplicationButton;
+        private System.Windows.Forms.ToolStripMenuItem AboutPointSystemButton;
         private System.Windows.Forms.ToolStripButton EditTestButton;
         private System.Windows.Forms.ToolStripLabel UserLabel;
         private System.Windows.Forms.ToolStripLabel toolStripLabel2;
         private System.Windows.Forms.Panel ContentPanel;
+        private System.Windows.Forms.ToolStripMenuItem AboutApplicationMenuButton;
+        private System.Windows.Forms.ToolStripMenuItem AboutAuthorMenuItem;
     }
 }
 

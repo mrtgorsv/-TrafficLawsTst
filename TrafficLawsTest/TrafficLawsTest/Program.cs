@@ -1,8 +1,5 @@
 ﻿using System;
-using System.Reflection;
 using System.Windows.Forms;
-using Ninject;
-using TrafficLawsTest.Logic.Utils.IoC;
 using TrafficLawsTest.Utils.IoC;
 using TrafficLawsTest.Views;
 
@@ -28,15 +25,23 @@ namespace TrafficLawsTest
             mainWindow.Visible = false;
             mainWindow.Hide();
             LoginForm form = DiFactory.Resolve<LoginForm>();
+            bool logined = false;
             form.Logined += (sndr, arg) =>
             {
-
-                form.Hide();
+                logined = true;
                 form.Close();
-                mainWindow.Init();
             };
             form.ShowDialog();
-            Application.Run(mainWindow);
+
+            if (logined)
+            {
+                mainWindow.Init();
+                Application.Run(mainWindow);
+            }
+            else
+            {
+                Application.Exit();
+            }
         }
     }
 }

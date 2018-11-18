@@ -10,6 +10,9 @@ using System.Windows.Forms;
 
 namespace TrafficLawsTest.Controls
 {
+    /// <summary>
+    /// Пользовательский элемент редактирования теста
+    /// </summary>
     public partial class EditTestUserControl : UserControl
     {
         public EditTestUserControl()

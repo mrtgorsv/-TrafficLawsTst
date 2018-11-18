@@ -23,8 +23,13 @@ namespace TrafficLawsTest.Presenters
         bool Save();
     }
 
+    /// <summary>
+    /// Класс презентер для представления формы редактирования теста
+    /// Описывают логику данного представления
+    /// </summary>
     public class EditTestPresenter : IEditTestPresenter
     {
+        /// Класса хранящий информация о текщем пользователе
         private readonly ISecurityManager _securityManager;
         private readonly ITestService _testService;
 

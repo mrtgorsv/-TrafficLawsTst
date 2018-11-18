@@ -7,7 +7,7 @@ namespace TrafficLawsTest.Security.Services
     public interface IUserService
     {
         User Get(int id);
-        User Get(string login, string password);
+        User Get(string login);
     }
 
     public class UserService  : IUserService
@@ -23,9 +23,9 @@ namespace TrafficLawsTest.Security.Services
             return _domainContext.Users.FirstOrDefault(u => u.Id.Equals(id));
         }
 
-        public User Get(string login, string password)
+        public User Get(string login)
         {
-            return _domainContext.Users.FirstOrDefault(u => u.Login.Equals(login) && u.Password.Equals(u.Password));
+            return _domainContext.Users.FirstOrDefault(u => u.Login.Equals(login));
         }
     }
 }

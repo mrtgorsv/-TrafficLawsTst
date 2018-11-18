@@ -4,6 +4,9 @@ using TrafficLawsTest.DataSource.Models;
 
 namespace TrafficLawsTest.DataSource.Context
 {
+    /// <summary>
+    /// Контекст для доступа к данным
+    /// </summary>
     public interface IDomainContext
     {
         DbSet<User> Users { get; set; }

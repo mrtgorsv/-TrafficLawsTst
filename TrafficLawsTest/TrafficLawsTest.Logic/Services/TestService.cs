@@ -12,6 +12,9 @@ namespace TrafficLawsTest.Logic.Services
         void Update(Test test);
     }
 
+    /// <summary>
+    /// Класс сервис для работы к тестами
+    /// </summary>
     public class TestService : ITestService
     {
         private readonly IDomainContext _domainContext;
@@ -20,6 +23,9 @@ namespace TrafficLawsTest.Logic.Services
             _domainContext = domainContext;
         }
 
+        /// <summary>
+        /// Функция, для получения списка вопросов теста
+        /// </summary>
         public List<TestPart> Get()
         {
             return _domainContext.TestParts
@@ -27,6 +33,9 @@ namespace TrafficLawsTest.Logic.Services
                 .ToList();
         }
 
+        /// <summary>
+        /// Функция, для обновления теста
+        /// </summary>
         public void Update(Test test)
         {
             _domainContext.Entry(test).State = EntityState.Modified;

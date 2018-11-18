@@ -94,6 +94,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>DataResource.resx</DependentUpon>
     </Compile>
+    <Compile Include="Utils\ImageLoader.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201811050739036_InitialCreate.resx">
@@ -127,13 +128,21 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Content\Images\Test_04.png" />
+    <EmbeddedResource Include="Content\Images\Test_05.png" />
+    <EmbeddedResource Include="Content\Images\Test_06.png" />
+  </ItemGroup>
+  <ItemGroup>
     <EmbeddedResource Include="Content\Images\Test_01.jpg" />
-  </ItemGroup>
-  <ItemGroup>
     <EmbeddedResource Include="Content\Images\Test_02.jpg" />
+    <EmbeddedResource Include="Content\Images\Test_03.jpg" />
+    <EmbeddedResource Include="Content\Images\Test_07.png" />
+    <EmbeddedResource Include="Content\Images\Test_08.png" />
+    <EmbeddedResource Include="Content\Images\Test_09.png" />
+    <EmbeddedResource Include="Content\Images\Test_10.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Content\Images\Test_03.jpg" />
+    <Folder Include="Content\Images\old\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Windows.Forms;
-using Ninject;
 using TrafficLawsTest.Presenters;
 
 namespace TrafficLawsTest.Views
@@ -17,17 +16,20 @@ namespace TrafficLawsTest.Views
             InitializeComponent();
         }
 
+        /// <summary>
+        /// Переопределение обработчика события загрузки формы
+        /// </summary>
+        /// <param name="e"></param>
         protected override void OnLoad(EventArgs e)
         {
             base.OnLoad(e);
-
             LoginButton.Click += OnLogin;
             Text = _loginPresenrer.Title;
         }
 
         private void OnLogin(object sender, EventArgs e)
         {
-            if (_loginPresenrer.TryLogIn(LoginTextBox.Text , PasswordTextBox.Text))
+            if (_loginPresenrer.TryLogIn(LoginTextBox.Text))
             {
                 OnLogined();
             }

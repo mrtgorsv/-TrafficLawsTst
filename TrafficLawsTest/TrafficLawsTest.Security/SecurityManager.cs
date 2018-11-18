@@ -5,6 +5,9 @@ using TrafficLawsTest.Security.Services;
 
 namespace TrafficLawsTest.Security
 {
+    /// <summary>
+    /// Класс для доступа к текущему пользователя
+    /// </summary>
     public class SecurityManager : ISecurityManager
     {
         private readonly IUserService _userService;
@@ -19,9 +22,9 @@ namespace TrafficLawsTest.Security
 
         public bool Authorized => CurrentPrincipal != null;
 
-        public bool TryLogIn(string login, string password)
+        public bool TryLogIn(string login)
         {
-            var user = _userService.Get(login, password);
+            var user = _userService.Get(login);
             if (user == null) return false;
             CurrentPrincipal = new ApplicationUser
             {

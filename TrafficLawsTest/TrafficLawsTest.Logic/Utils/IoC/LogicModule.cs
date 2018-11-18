@@ -4,6 +4,9 @@ using TrafficLawsTest.Logic.Services;
 
 namespace TrafficLawsTest.Logic.Utils.IoC
 {
+    /// <summary>
+    /// Модуль для мапинга интерфейсов и реализации сервисов
+    /// </summary>
     public class LogicModule : NinjectModule
     {
         public override void Load()

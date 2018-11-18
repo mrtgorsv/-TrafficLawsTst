@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.label1 = new System.Windows.Forms.Label();
+            this.StatisticLabel = new System.Windows.Forms.Label();
             this.BackButton = new System.Windows.Forms.Button();
             this.TestStatisticListBox = new System.Windows.Forms.ListBox();
             this.tableLayoutPanel1.SuspendLayout();
@@ -39,7 +39,7 @@
             // 
             this.tableLayoutPanel1.ColumnCount = 1;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.Controls.Add(this.label1, 0, 0);
+            this.tableLayoutPanel1.Controls.Add(this.StatisticLabel, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.BackButton, 0, 2);
             this.tableLayoutPanel1.Controls.Add(this.TestStatisticListBox, 0, 1);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -52,17 +52,16 @@
             this.tableLayoutPanel1.Size = new System.Drawing.Size(560, 401);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
-            // label1
+            // StatisticLabel
             // 
-            this.label1.AutoSize = true;
-            this.label1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label1.Location = new System.Drawing.Point(3, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(554, 29);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Предыдущие тестирования";
-            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.StatisticLabel.AutoSize = true;
+            this.StatisticLabel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.StatisticLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.StatisticLabel.Location = new System.Drawing.Point(3, 0);
+            this.StatisticLabel.Name = "StatisticLabel";
+            this.StatisticLabel.Size = new System.Drawing.Size(554, 29);
+            this.StatisticLabel.TabIndex = 0;
+            this.StatisticLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // BackButton
             // 
@@ -80,7 +79,9 @@
             // TestStatisticListBox
             // 
             this.TestStatisticListBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.TestStatisticListBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.TestStatisticListBox.FormattingEnabled = true;
+            this.TestStatisticListBox.ItemHeight = 29;
             this.TestStatisticListBox.Location = new System.Drawing.Point(3, 32);
             this.TestStatisticListBox.Name = "TestStatisticListBox";
             this.TestStatisticListBox.Size = new System.Drawing.Size(554, 310);
@@ -102,7 +103,7 @@
         #endregion
 
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label StatisticLabel;
         private System.Windows.Forms.Button BackButton;
         private System.Windows.Forms.ListBox TestStatisticListBox;
     }

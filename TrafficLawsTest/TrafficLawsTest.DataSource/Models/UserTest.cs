@@ -4,6 +4,9 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace TrafficLawsTest.DataSource.Models
 {
+    /// <summary>
+    /// Результаты тестирования пользователей
+    /// </summary>
     public class UserTest
     {
         [Key]

@@ -10,7 +10,7 @@ namespace TrafficLawsTest.Security
 
         bool Authorized { get; }
 
-        bool TryLogIn(string login , string password);
+        bool TryLogIn(string login);
         void LogOut();
         bool CheckRole(string roleName);
     }

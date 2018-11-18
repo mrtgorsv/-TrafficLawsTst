@@ -1,27 +1,24 @@
-﻿using TrafficLawsTest.Security;
-
-namespace TrafficLawsTest.Presenters
+﻿namespace TrafficLawsTest.Presenters
 {
     public interface IMainPresenter
     {
         string Title { get; }
-        bool TryLogIn(string login, string password);
     }
 
+    /// <summary>
+    /// Класс презентер для представления главной формы приложения
+    /// Описывают логику данного представления
+    /// </summary>
     public class MainPresenter : IMainPresenter
     {
-        private readonly ISecurityManager _securityManager;
-
-        public MainPresenter(ISecurityManager securityManager)
+        /// <summary>
+        /// Конструктор
+        /// </summary>
+        public MainPresenter()
         {
-            _securityManager = securityManager;
         }
 
+        /// Заголовок главной формы
         public string Title => "Тест ПДД";
-
-        public bool TryLogIn(string login, string password)
-        {
-            return _securityManager.TryLogIn(login, password);
-        }
     }
 }

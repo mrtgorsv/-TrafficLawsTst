@@ -4,18 +4,25 @@ using System.Linq;
 using System.Windows.Forms;
 using TrafficLawsTest.Presenters;
 using TrafficLawsTest.Utils;
+using TrafficLawsTest.Views;
 
 namespace TrafficLawsTest.Controls
 {
+    /// <summary>
+    /// Пользовательский элемент формы теста 
+    /// </summary>
     public partial class TestUserControl : UserControl
     {
+        // Презентер формы
         private readonly ITestPresenter _testPresenter;
 
-
+        // Варианты ответов задания
         private readonly List<RadioButton> _answerButtons;
 
+        // Событие завершения теста
         public event EventHandler CompleteTest;
 
+        // Конструктор класса
         public TestUserControl(ITestPresenter testPresenter)
         {
             _testPresenter = testPresenter;
@@ -30,6 +37,12 @@ namespace TrafficLawsTest.Controls
             };
         }
 
+        public MainWindow MainForm => Parent?.Parent as MainWindow;
+
+        /// <summary>
+        /// Переопределение обработчика события загрузки формы
+        /// </summary>
+        /// <param name="e"></param>
         protected override void OnLoad(EventArgs e)
         {
             base.OnLoad(e);
@@ -38,8 +51,26 @@ namespace TrafficLawsTest.Controls
             PrevButton.Click += OnPrevButtonClicked;
             NextButton.Click += OnNextButtonClicked;
             CompleteTestButton.Click += OnCompleteButtonClicked;
+            MainForm.Next += OnNextButtonClicked;
+            MainForm.Prev += OnPrevButtonClicked;
         }
 
+        /// <summary>
+        /// Обработчик события выбора варианта ответа
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void OnAnswerChanged(object sender, EventArgs e)
+        {
+            SaveSelection();
+            RefreshView();
+        }
+
+        /// <summary>
+        /// Обработчик события нажатия кнопки завершения теста
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void OnCompleteButtonClicked(object sender, EventArgs e)
         {
             SaveSelection();
@@ -47,6 +78,9 @@ namespace TrafficLawsTest.Controls
             OnCompleteTest();
         }
 
+        /// <summary>
+        /// Функция отображения результата тестирования
+        /// </summary>
         private void ShowResultForm(string[] result)
         {
             var resultForm = new ResultForm();
@@ -54,6 +88,9 @@ namespace TrafficLawsTest.Controls
             resultForm.ShowDialog(this);
         }
 
+        /// <summary>
+        /// Обработчик события нажатия кнопки перехода к следующему вопросу
+        /// </summary>
         private void OnNextButtonClicked(object sender, EventArgs e)
         {
             SaveSelection();
@@ -61,6 +98,9 @@ namespace TrafficLawsTest.Controls
             UpdateQuestion();
         }
 
+        /// <summary>
+        /// Обработчик события нажатия кнопки перехода к предыдущему вопросу
+        /// </summary>
         private void OnPrevButtonClicked(object sender, EventArgs e)
         {
             SaveSelection();
@@ -68,6 +108,9 @@ namespace TrafficLawsTest.Controls
             UpdateQuestion();
         }
 
+        /// <summary>
+        /// Функция сохранения текущего выбора пользователя
+        /// </summary>
         private void SaveSelection()
         {
             var checkedButton = _answerButtons
@@ -76,49 +119,94 @@ namespace TrafficLawsTest.Controls
             _testPresenter.CurrentQuestion.UserAnswer = Convert.ToInt32(checkedButton?.Tag);
         }
 
+        /// <summary>
+        /// Функция обновления состояния представления
+        /// </summary>
         private void RefreshView()
         {
-            PrevButton.Enabled = !_testPresenter.IsFirst;
-            NextButton.Enabled = !_testPresenter.IsLast;
+            PrevButton.Visible = !_testPresenter.IsFirst;
+            NextButton.Visible = !_testPresenter.IsLast;
+            CompleteTestButton.Visible = _testPresenter.TestComplete;
         }
 
+        /// <summary>
+        /// Функция обновления информации о текущем вопросе
+        /// </summary>
         private void UpdateQuestion()
         {
             UpdateImage();
             SetAnswers();
+            QuestionOrderLabel.Text = _testPresenter.CurrentQuestion?.Name;
             RefreshView();
         }
 
+        /// <summary>
+        /// Функция установки вариантов ответа текущего вопроса
+        /// </summary>
         private void SetAnswers()
         {
+            // Отписываемся от обработчика события изменения выбора
+            FirstAnswer.CheckedChanged -= OnAnswerChanged;
+            SecondAnswer.CheckedChanged -= OnAnswerChanged;
+            ThirdAnswer.CheckedChanged -= OnAnswerChanged;
+            FourAnswer.CheckedChanged -= OnAnswerChanged;
+
+            // Сбрасываем все значения 
             FirstAnswer.Checked = false;
             SecondAnswer.Checked = false;
             ThirdAnswer.Checked = false;
             FourAnswer.Checked = false;
 
-            FirstAnswer.Text = _testPresenter.GetAnswerText(0);;
-            SecondAnswer.Text = _testPresenter.GetAnswerText(1);
-            ThirdAnswer.Text = _testPresenter.GetAnswerText(2);
-            FourAnswer.Text = _testPresenter.GetAnswerText(3);
+            FirstAnswer.Text = $"a) {_testPresenter.GetAnswerText(0)}";
+            SecondAnswer.Text = $"б) {_testPresenter.GetAnswerText(1)}";
+            ThirdAnswer.Text = $"в) {_testPresenter.GetAnswerText(2)}";
+            FourAnswer.Text = $"г) {_testPresenter.GetAnswerText(3)}";
 
+            // Устанавливаем выбранное ранее значения пользователем
             var answerButton = _answerButtons
                 .FirstOrDefault(r => Convert.ToInt32(r.Tag).Equals(_testPresenter.CurrentQuestion.UserAnswer));
             if (answerButton != null)
             {
                 answerButton.Checked = true;
             }
+
+            // Подписываемся на событие изменения выбора
+            FirstAnswer.CheckedChanged += OnAnswerChanged;
+            SecondAnswer.CheckedChanged += OnAnswerChanged;
+            ThirdAnswer.CheckedChanged += OnAnswerChanged;
+            FourAnswer.CheckedChanged += OnAnswerChanged;
         }
 
 
+        /// <summary>
+        /// Функция отображения изображения текущего вопроса
+        /// </summary>
         private void UpdateImage()
         {
             TestImageBox.SizeMode = PictureBoxSizeMode.StretchImage;
             TestImageBox.Image = _testPresenter.CurrentQuestion.Content.ToImage();
         }
 
+        /// <summary>
+        /// Функция вызова события завершения теста
+        /// </summary>
         protected virtual void OnCompleteTest()
         {
             CompleteTest?.Invoke(this, EventArgs.Empty);
+        }
+
+        protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
+        {
+            switch (keyData)
+            {
+                case Keys.Left:
+                    PrevButton.PerformClick();
+                    return true;
+                case Keys.Right:
+                    NextButton.PerformClick();
+                    return true;
+            }
+            return base.ProcessCmdKey(ref msg, keyData);
         }
     }
 }

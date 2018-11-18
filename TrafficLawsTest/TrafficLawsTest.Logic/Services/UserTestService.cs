@@ -5,15 +5,22 @@ using TrafficLawsTest.Security;
 
 namespace TrafficLawsTest.Logic.Services
 {
+    /// <summary>
+    /// Интерфейс сервиса работы с тестами пользователей
+    /// </summary>
     public interface IUserTestService
     {
         void AddUserResult(int reuslt, int total);
         string[] GetResults();
     }
 
+    /// <summary>
+    /// Класс сервис для работы с результатами тестов пользователей
+    /// </summary>
     public class UserTestService : IUserTestService
     {
         private readonly IDomainContext _domainContext;
+        /// Класса хранящий информация о текщем пользователе
         private readonly ISecurityManager _securityManager;
 
         public UserTestService(IDomainContext domainContext, ISecurityManager securityManager)
@@ -22,6 +29,9 @@ namespace TrafficLawsTest.Logic.Services
             _securityManager = securityManager;
         }
 
+        /// <summary>
+        /// Функция, добавляющая запись о тестирования пользователя
+        /// </summary>
         public void AddUserResult(int reuslt, int total)
         {
             var newTestResult = _domainContext.UserTests.Create();
@@ -36,9 +46,13 @@ namespace TrafficLawsTest.Logic.Services
             _domainContext.SaveChanges();
         }
 
+        /// <summary>
+        /// Функция, возвращающая результаты тестирования пользователя
+        /// </summary>
         public string[] GetResults()
         {
             var userId = _securityManager.CurrentPrincipal.Id;
+
             return _domainContext.UserTests
                 .Where(ut => ut.UserId.Equals(userId))
                 .OrderByDescending(ut => ut.DateStamp)

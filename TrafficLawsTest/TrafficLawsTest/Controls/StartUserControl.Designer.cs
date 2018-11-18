@@ -36,17 +36,18 @@
             // 
             // tableLayoutPanel1
             // 
-            this.tableLayoutPanel1.ColumnCount = 1;
+            this.tableLayoutPanel1.ColumnCount = 2;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.Controls.Add(this.StartTestButton, 0, 0);
-            this.tableLayoutPanel1.Controls.Add(this.ShowTestStatisticButton, 0, 1);
+            this.tableLayoutPanel1.Controls.Add(this.StartTestButton, 0, 1);
+            this.tableLayoutPanel1.Controls.Add(this.ShowTestStatisticButton, 1, 1);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 2;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 80F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(544, 514);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
@@ -54,9 +55,9 @@
             // 
             this.StartTestButton.Dock = System.Windows.Forms.DockStyle.Fill;
             this.StartTestButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.StartTestButton.Location = new System.Drawing.Point(3, 3);
+            this.StartTestButton.Location = new System.Drawing.Point(3, 437);
             this.StartTestButton.Name = "StartTestButton";
-            this.StartTestButton.Size = new System.Drawing.Size(538, 251);
+            this.StartTestButton.Size = new System.Drawing.Size(266, 74);
             this.StartTestButton.TabIndex = 0;
             this.StartTestButton.Text = "Пройти тест";
             this.StartTestButton.UseVisualStyleBackColor = true;
@@ -65,9 +66,9 @@
             // 
             this.ShowTestStatisticButton.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ShowTestStatisticButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.ShowTestStatisticButton.Location = new System.Drawing.Point(3, 260);
+            this.ShowTestStatisticButton.Location = new System.Drawing.Point(275, 437);
             this.ShowTestStatisticButton.Name = "ShowTestStatisticButton";
-            this.ShowTestStatisticButton.Size = new System.Drawing.Size(538, 251);
+            this.ShowTestStatisticButton.Size = new System.Drawing.Size(266, 74);
             this.ShowTestStatisticButton.TabIndex = 1;
             this.ShowTestStatisticButton.Text = "Прошлые тестирования";
             this.ShowTestStatisticButton.UseVisualStyleBackColor = true;

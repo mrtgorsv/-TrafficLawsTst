@@ -46,6 +46,7 @@
             // 
             // tableLayoutPanel1
             // 
+            this.tableLayoutPanel1.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.tableLayoutPanel1.ColumnCount = 2;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
@@ -59,7 +60,7 @@
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 4;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 120F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
@@ -70,9 +71,10 @@
             // 
             this.QuestionOrderLabel.AutoSize = true;
             this.QuestionOrderLabel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.QuestionOrderLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.QuestionOrderLabel.Location = new System.Drawing.Point(3, 0);
             this.QuestionOrderLabel.Name = "QuestionOrderLabel";
-            this.QuestionOrderLabel.Size = new System.Drawing.Size(290, 25);
+            this.QuestionOrderLabel.Size = new System.Drawing.Size(290, 30);
             this.QuestionOrderLabel.TabIndex = 0;
             this.QuestionOrderLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
@@ -80,9 +82,9 @@
             // 
             this.tableLayoutPanel1.SetColumnSpan(this.TestImageBox, 2);
             this.TestImageBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.TestImageBox.Location = new System.Drawing.Point(3, 28);
+            this.TestImageBox.Location = new System.Drawing.Point(3, 33);
             this.TestImageBox.Name = "TestImageBox";
-            this.TestImageBox.Size = new System.Drawing.Size(586, 269);
+            this.TestImageBox.Size = new System.Drawing.Size(586, 264);
             this.TestImageBox.TabIndex = 1;
             this.TestImageBox.TabStop = false;
             // 

@@ -4,6 +4,9 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace TrafficLawsTest.DataSource.Models
 {
+    /// <summary>
+    /// Вариант ответа задания
+    /// </summary>
     [Serializable]
     public partial class TestPartAnswer
     {
