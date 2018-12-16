@@ -35,19 +35,7 @@ namespace TrafficLawsTest
             AboutPointSystemButton.Click += OnAboutPointSystemButtonClicked;
             AboutTrafficLawsButton.Click += OnAboutTrafficLawsButtonClicked;
             AboutApplicationMenuButton.Click += OnAboutApplicationMenuButtonClicked;
-            AboutAuthorMenuItem.Click += OnAboutAuthorMenuItemClicked;
             ChangeOpacity();
-        }
-
-        /// <summary>
-        /// Обработчик события нажатия на кнопку меню "Об авторе"
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void OnAboutAuthorMenuItemClicked(object sender, EventArgs e)
-        {
-            var form = new AboutAuthorForm();
-            form.ShowDialog(this);
         }
 
         /// <summary>

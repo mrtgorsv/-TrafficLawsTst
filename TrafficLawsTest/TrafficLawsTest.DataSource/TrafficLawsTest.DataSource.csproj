@@ -131,8 +131,6 @@
     <EmbeddedResource Include="Content\Images\Test_04.png" />
     <EmbeddedResource Include="Content\Images\Test_05.png" />
     <EmbeddedResource Include="Content\Images\Test_06.png" />
-  </ItemGroup>
-  <ItemGroup>
     <EmbeddedResource Include="Content\Images\Test_01.jpg" />
     <EmbeddedResource Include="Content\Images\Test_02.jpg" />
     <EmbeddedResource Include="Content\Images\Test_03.jpg" />
@@ -140,9 +138,37 @@
     <EmbeddedResource Include="Content\Images\Test_08.png" />
     <EmbeddedResource Include="Content\Images\Test_09.png" />
     <EmbeddedResource Include="Content\Images\Test_10.jpg" />
+    <EmbeddedResource  Include="Content\Images\Test_11.png" />
+    <EmbeddedResource  Include="Content\Images\Test_12.png" />
+    <EmbeddedResource  Include="Content\Images\Test_13.png" />
+    <EmbeddedResource  Include="Content\Images\Test_14.png" />
+    <EmbeddedResource  Include="Content\Images\Test_15.png" />
+    <EmbeddedResource  Include="Content\Images\Test_16.png" />
+    <EmbeddedResource  Include="Content\Images\Test_17.png" />
+    <EmbeddedResource  Include="Content\Images\Test_18.png" />
+    <EmbeddedResource  Include="Content\Images\Test_19.png" />
+    <EmbeddedResource  Include="Content\Images\Test_20.png" />
+    <EmbeddedResource  Include="Content\Images\Test_21.png" />
+    <EmbeddedResource  Include="Content\Images\Test_22.png" />
+    <EmbeddedResource  Include="Content\Images\Test_23.png" />
+    <EmbeddedResource  Include="Content\Images\Test_24.png" />
+    <EmbeddedResource  Include="Content\Images\Test_25.png" />
+    <EmbeddedResource  Include="Content\Images\Test_26.png" />
+    <EmbeddedResource  Include="Content\Images\Test_27.png" />
+    <EmbeddedResource  Include="Content\Images\Test_28.png" />
+    <EmbeddedResource  Include="Content\Images\Test_29.png" />
+    <EmbeddedResource  Include="Content\Images\Test_30.png" />
+    <EmbeddedResource  Include="Content\Images\Test_31.png" />
+    <EmbeddedResource  Include="Content\Images\Test_32.png" />
+    <EmbeddedResource  Include="Content\Images\Test_33.png" />
+    <EmbeddedResource  Include="Content\Images\Test_34.png" />
+    <EmbeddedResource  Include="Content\Images\Test_35.png" />
+    <EmbeddedResource  Include="Content\Images\Test_36.png" />
+    <EmbeddedResource  Include="Content\Images\Test_37.png" />
+    <EmbeddedResource  Include="Content\Images\Test_38.png" />
+    <EmbeddedResource  Include="Content\Images\Test_39.png" />
+    <EmbeddedResource  Include="Content\Images\Test_40.png" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Content\Images\old\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

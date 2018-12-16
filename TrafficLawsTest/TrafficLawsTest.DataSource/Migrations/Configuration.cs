@@ -18,12 +18,8 @@ namespace TrafficLawsTest.DataSource.Migrations
 
         protected override void Seed(DomainContext context)
         {
-            if (!context.Users.Any())
-            {
-                AddUsers(context);
-            }
-
-            if (context.TestParts.Count() < 10)
+			AddUsers(context);
+			if (context.TestParts.Count() < 40)
             {
                 context.TestParts.RemoveRange(context.TestParts.ToList());
                 context.SaveChanges();
@@ -44,7 +40,37 @@ namespace TrafficLawsTest.DataSource.Migrations
             context.TestParts.Add(CreateTestPart(1, seq++, "10 м", "5 м", "15 м", "20 м"));
             context.TestParts.Add(CreateTestPart(4, seq++, "Только автобусу", "Только мотоциклу", "Легковушке и автобусу", "Никому"));
             context.TestParts.Add(CreateTestPart(3, seq++, "Прямо и налево", "Прямо и в обратном направлении", "Только прямо", "В любом направлении"));
-            context.TestParts.Add(CreateTestPart(1, seq, "Б и В", "Только В", "Все", "Только Б"));
+            context.TestParts.Add(CreateTestPart(1, seq++, "Б и В", "Только В", "Все", "Только Б"));
+            context.TestParts.Add(CreateTestPart(2, seq++, "О начале зоны, где запрещены любые манёвры", "О приближении к сплошной линии, разделяющей транспортные потоки", "О начале опасного участка дороги"));
+            context.TestParts.Add(CreateTestPart(2, seq++, "Разрешено, если вы проживаете в обозначенной знаком зоне", "Разрешено", "Запрещено"));
+            context.TestParts.Add(CreateTestPart(2, seq++, "Обязаны только при наличии движущихся сзади тс", "Только В", "Обязаны", "Не обязаны"));
+            context.TestParts.Add(CreateTestPart(3, seq++, "Проехать перекрёсток первым", "Уступить дорогу только грузовику", "Уступить дорогу только автобусу"));
+            context.TestParts.Add(CreateTestPart(3, seq++, "Будете действовать по договорённости с водителем легковушки", "Развернётесь первым", "Выедете на перекрёсток уступив дорогу легковушке"));
+            context.TestParts.Add(CreateTestPart(2, seq++, "На правом рисунке", "На левом рисунке", "На обоих рисунках"));
+            context.TestParts.Add(CreateTestPart(1, seq++, "Нельзя", "Можно", "Можно, если грузовик движется со скоростью 30 км/час"));
+            context.TestParts.Add(CreateTestPart(3, seq++, "Все", "Только А", "А и В"));
+            context.TestParts.Add(CreateTestPart(3, seq++, "Прямо или налево", "Только налево", "Прямо, налево или в обратном направлении"));
+            context.TestParts.Add(CreateTestPart(3, seq++, "В указанных местах пересекать сплошную линию разметки запрещено", "А и Б", "Только Б"));
+            context.TestParts.Add(CreateTestPart(1, seq++, "Должны", "Не должны", "Должны только с заездом на тротуар"));
+            context.TestParts.Add(CreateTestPart(1, seq++, "По любой из указанных", "Только по А", "Только Б"));
+            context.TestParts.Add(CreateTestPart(3, seq++, "Можно только в светлое время суток", "Нельзя", "Можно"));
+            context.TestParts.Add(CreateTestPart(1, seq++, "Разрешено", "Запрещено", "Разрешено только для высадки пассажиров"));
+            context.TestParts.Add(CreateTestPart(1, seq++, "Обоим автомобилям", "Только легковому автомобилю", "Только грузовому автомобилю"));
+            context.TestParts.Add(CreateTestPart(2, seq++, "Только трамваю Б", "Обоим трамваям", "Только трамваю А"));
+            context.TestParts.Add(CreateTestPart(2, seq++, "Должны уступить дорогу легковому автомобилю и автобусу", "Должны уступить дорогу только автобусу", "Имеете преимущество"));
+            context.TestParts.Add(CreateTestPart(3, seq++, "Только водитель грузового автомобиля", "Оба", "Только водитель легковушки", "Никто не нарушает"));
+            context.TestParts.Add(CreateTestPart(2, seq++, "Очерёдность движения регулируется светофором", "Отсутствует искусственное освещение", "Будет затруднён разъезд со встречными тс"));
+            context.TestParts.Add(CreateTestPart(1, seq++, "В направлениях А и В", "Во всех направлениях, кроме Г", "Только в направлении В"));
+            context.TestParts.Add(CreateTestPart(3, seq++, "Только разворот", "ТТолько поворот налево", "Поворот налево и разворот"));
+            context.TestParts.Add(CreateTestPart(1, seq++, "В любом направлении", "Налево и в обратном направлении", "Только налево"));
+            context.TestParts.Add(CreateTestPart(2, seq++, "Имеет преимущество, так как на автомобиле включены поворотники", "Не должен создавать помехи двигающемуся по правой полосе авто", "Имеет преимущество, поскольку завершает обгон"));
+            context.TestParts.Add(CreateTestPart(1, seq++, "Разрешается при видимости дороги не менее 100 м", "Разрешается ", "Запрещается"));
+            context.TestParts.Add(CreateTestPart(1, seq++, "Только по А", "Только по Б", "ТРазрешается при видимости дороги не менее 100 м"));
+            context.TestParts.Add(CreateTestPart(1, seq++, "Запрещается", "Разрешается", "Разрешается только для посадки или высадки пассажиров"));
+            context.TestParts.Add(CreateTestPart(2, seq++, "Налево и в обратном направлении", "В любом", "Только на лево"));
+            context.TestParts.Add(CreateTestPart(1, seq++, "Уступите дорогу трамваю", "Проедете первым, руководствуясь знаком “Главная дорога”", "Проедете первым, руководствуясь сигналом светофора"));
+            context.TestParts.Add(CreateTestPart(3, seq++, "Никому", "Никому", "Только легковому автомобилю"));
+            context.TestParts.Add(CreateTestPart(1, seq, "Нарушил, если не выставил знак аварийной остановки", "Нарушил", "Не нарушил"));
         }
 
         private TestPart CreateTestPart(int correctAnswer, int seq, params string[] answers)
@@ -76,12 +102,10 @@ namespace TrafficLawsTest.DataSource.Migrations
             const string admin = "admin";
             const string test = "test";
 
-            if (context.Users.Any(u => u.Login.Equals(admin)))
-            {
-                return;
-            }
+			context.Users.RemoveRange(context.Users.ToList());
+			context.SaveChanges();
 
-            var adminUser = new User
+			var adminUser = new User
             {
                 Login = admin,
                 Password = admin,
@@ -99,11 +123,25 @@ namespace TrafficLawsTest.DataSource.Migrations
                 Name = admin,
                 Users = new List<User>()
             };
-            adminRole.Users.Add(adminUser);
+			adminRole.Users.Add(adminUser);
             adminUser.Roles.Add(adminRole);
             context.Users.Add(adminUser);
-            context.Users.Add(testUser);
             context.Roles.Add(adminRole);
+			context.Users.Add(CreateUser(test, test));
+
+			context.Users.Add(CreateUser("user3", "user3"));
+			context.Users.Add(CreateUser("Дмитрий Дмитриевич Дмитров", "Дмитрий Дмитриевич Дмитров"));
+		}
+
+        private User CreateUser(string name , string pass)
+        {
+			var newUser = new User
+            {
+                Login = name,
+                Password = pass,
+                Roles = new List<Role>()
+            };
+			return newUser;
         }
     }
 }

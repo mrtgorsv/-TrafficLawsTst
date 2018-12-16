@@ -8,5 +8,20 @@ namespace TrafficLawsTest.Views.About
         {
             InitializeComponent();
         }
-    }
+
+		private void tableLayoutPanel1_Paint(object sender, PaintEventArgs e)
+		{
+
+		}
+
+		private void label4_Click(object sender, System.EventArgs e)
+		{
+
+		}
+
+		private void label2_Click(object sender, System.EventArgs e)
+		{
+
+		}
+	}
 }

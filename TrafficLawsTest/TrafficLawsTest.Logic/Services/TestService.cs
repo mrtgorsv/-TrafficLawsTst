@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 using TrafficLawsTest.DataSource.Context;
@@ -8,7 +9,7 @@ namespace TrafficLawsTest.Logic.Services
 {
     public interface ITestService
     {
-        List<TestPart> Get();
+        List<TestPart> Get(int count = 20);
         void Update(Test test);
     }
 
@@ -17,6 +18,7 @@ namespace TrafficLawsTest.Logic.Services
     /// </summary>
     public class TestService : ITestService
     {
+        private static Random _rnd = new Random();
         private readonly IDomainContext _domainContext;
         public TestService(IDomainContext domainContext)
         {
@@ -26,11 +28,22 @@ namespace TrafficLawsTest.Logic.Services
         /// <summary>
         /// Функция, для получения списка вопросов теста
         /// </summary>
-        public List<TestPart> Get()
+        public List<TestPart> Get(int count = 20)
         {
-            return _domainContext.TestParts
+            var testParts = _domainContext.TestParts
                 .Include(t => t.Answers)
                 .ToList();
+            int takedCount = 0;
+            List<TestPart> result = new List<TestPart>();
+            while (takedCount < 20)
+            {
+                var next = _rnd.Next(testParts.Count);
+                if (result.Contains(testParts[next])) continue;
+                result.Add(testParts[next]);
+                takedCount++;
+            }
+
+            return result;
         }
 
         /// <summary>

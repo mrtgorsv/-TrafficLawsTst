@@ -57,6 +57,7 @@
             this.StatisticLabel.AutoSize = true;
             this.StatisticLabel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.StatisticLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.StatisticLabel.ForeColor = System.Drawing.SystemColors.Highlight;
             this.StatisticLabel.Location = new System.Drawing.Point(3, 0);
             this.StatisticLabel.Name = "StatisticLabel";
             this.StatisticLabel.Size = new System.Drawing.Size(554, 29);

@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using TrafficLawsTest.DataSource.Context;
 using TrafficLawsTest.DataSource.Models;
 
@@ -8,6 +9,7 @@ namespace TrafficLawsTest.Security.Services
     {
         User Get(int id);
         User Get(string login);
+        void LoadUsers(string[] users);
     }
 
     public class UserService  : IUserService
@@ -26,6 +28,19 @@ namespace TrafficLawsTest.Security.Services
         public User Get(string login)
         {
             return _domainContext.Users.FirstOrDefault(u => u.Login.Equals(login));
+        }
+
+        public void LoadUsers(string[] users)
+        {
+            foreach (string user in users)
+            {
+                if (!_domainContext.Users.Any(u => u.Login.Equals(user)))
+                {
+                    _domainContext.Users.Add(new User() { Login = user , Password = string.Empty});
+                }
+            }
+
+            _domainContext.SaveChanges();
         }
     }
 }

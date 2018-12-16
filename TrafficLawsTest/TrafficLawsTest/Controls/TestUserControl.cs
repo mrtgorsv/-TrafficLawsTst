@@ -28,6 +28,7 @@ namespace TrafficLawsTest.Controls
             _testPresenter = testPresenter;
             InitializeComponent();
 
+            // Группировки кнопок с вариантами ответов
             _answerButtons = new List<RadioButton>()
             {
                 FirstAnswer,
@@ -124,8 +125,11 @@ namespace TrafficLawsTest.Controls
         /// </summary>
         private void RefreshView()
         {
+            // Кнопка "Назад" недоступна , если вопрос первый в списке
             PrevButton.Visible = !_testPresenter.IsFirst;
+            // Кнопка "Вперед" недоступна , если вопрос последний в списке
             NextButton.Visible = !_testPresenter.IsLast;
+            // Кнопка завершения видима, если указаны ответы на все вопросы
             CompleteTestButton.Visible = _testPresenter.TestComplete;
         }
 
@@ -134,9 +138,13 @@ namespace TrafficLawsTest.Controls
         /// </summary>
         private void UpdateQuestion()
         {
+            // Вызов метода обновления изображения теста
             UpdateImage();
+            // Метод, задающий варианты ответов для текущего теста
             SetAnswers();
+            // Установка текущего номера вопроса.
             QuestionOrderLabel.Text = _testPresenter.CurrentQuestion?.Name;
+            // Вызов метода обновления состояния формы
             RefreshView();
         }
 
@@ -157,10 +165,11 @@ namespace TrafficLawsTest.Controls
             ThirdAnswer.Checked = false;
             FourAnswer.Checked = false;
 
-            FirstAnswer.Text = $"a) {_testPresenter.GetAnswerText(0)}";
-            SecondAnswer.Text = $"б) {_testPresenter.GetAnswerText(1)}";
-            ThirdAnswer.Text = $"в) {_testPresenter.GetAnswerText(2)}";
-            FourAnswer.Text = $"г) {_testPresenter.GetAnswerText(3)}";
+            // Установка значений вариантов ответа теста
+            SetText(FirstAnswer, "a)",  _testPresenter.GetAnswerText(0));
+            SetText(SecondAnswer, "б)" , _testPresenter.GetAnswerText(1));
+            SetText(ThirdAnswer, "в)" , _testPresenter.GetAnswerText(2));
+            SetText(FourAnswer, "г)" , _testPresenter.GetAnswerText(3));
 
             // Устанавливаем выбранное ранее значения пользователем
             var answerButton = _answerButtons
@@ -175,6 +184,18 @@ namespace TrafficLawsTest.Controls
             SecondAnswer.CheckedChanged += OnAnswerChanged;
             ThirdAnswer.CheckedChanged += OnAnswerChanged;
             FourAnswer.CheckedChanged += OnAnswerChanged;
+        }
+
+        /// <summary>
+        /// Метод устанавливающий текст кнопки с вариантом ответа вопроса теста
+        /// </summary>
+        /// <param name="answer"></param>
+        /// <param name="prefix"></param>
+        /// <param name="text"></param>
+        private void SetText(RadioButton answer, string prefix , string text)
+        {
+            answer.Text = $"{prefix} {text}";
+            answer.Visible = !string.IsNullOrWhiteSpace(text);
         }
 
 
@@ -195,6 +216,12 @@ namespace TrafficLawsTest.Controls
             CompleteTest?.Invoke(this, EventArgs.Empty);
         }
 
+        /// <summary>
+        /// Метод для обработки события нажатия клавиш пользователем
+        /// </summary>
+        /// <param name="msg"></param>
+        /// <param name="keyData"></param>
+        /// <returns></returns>
         protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
         {
             switch (keyData)
@@ -206,6 +233,7 @@ namespace TrafficLawsTest.Controls
                     NextButton.PerformClick();
                     return true;
             }
+
             return base.ProcessCmdKey(ref msg, keyData);
         }
     }

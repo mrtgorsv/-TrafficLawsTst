@@ -47,6 +47,7 @@
             // label1
             // 
             resources.ApplyResources(this.label1, "label1");
+            this.label1.ForeColor = System.Drawing.SystemColors.Highlight;
             this.label1.Name = "label1";
             // 
             // ResultListBox
